@@ -1,0 +1,4 @@
+queue_rules:
+  - name: vm2-transformer
+    batch_size: 1
+    autoqueue: false
