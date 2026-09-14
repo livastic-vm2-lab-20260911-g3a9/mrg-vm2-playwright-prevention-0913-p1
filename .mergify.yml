@@ -1,0 +1,11 @@
+queue_rules:
+  - name: vm2-stack-midflight
+    batch_size: 1
+    merge_method: merge
+    queue_conditions:
+      - title ~= ^VM2_STACK_MIDFLIGHT_
+      - check-success = @github-actions/vm2-stack-midflight-guard
+    merge_conditions:
+      - title ~= ^VM2_STACK_MIDFLIGHT_
+      - check-success = @github-actions/vm2-stack-midflight-guard
+
