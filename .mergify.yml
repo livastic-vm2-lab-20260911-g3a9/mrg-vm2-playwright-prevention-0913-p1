@@ -1,6 +1,0 @@
-queue_rules:
-  - name: default
-    queue_conditions:
-      - base = vm2-merge-method-base-0915
-    merge_conditions: []
-    merge_method: merge
