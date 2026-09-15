@@ -1,0 +1,20 @@
+merge_queue:
+  mode: parallel
+  max_parallel_checks: 2
+scopes:
+  source:
+    manual:
+  default_capacity: 1
+queue_rules:
+  - name: vm2-ci-key-sentinel-chain
+    batch_size: 1
+    merge_method: merge
+    queue_conditions:
+      - base = vm2-sentinel-chain-base-0915
+      - title ~= ^VM2_CHAIN_SCOPE_
+      - check-success = @github-actions/vm2-sentinel-chain-guard
+    merge_conditions:
+      - base = vm2-sentinel-chain-base-0915
+      - title ~= ^VM2_CHAIN_SCOPE_
+      - check-success = @github-actions/vm2-sentinel-chain-guard
+      - check-success = vm2-never-pass-chain
